@@ -1,7 +1,7 @@
 import os
 from app import create_app, db
 from app.models import Admin, Book, Student, Inventory, ReadBook
-from flask.ext.script import Manager, Shell
+from flask_script import Manager, Shell
 
 app = create_app()
 manager = Manager(app)

@@ -2,13 +2,13 @@ from datetime import datetime
 from flask import render_template, session, redirect, url_for, flash, request, jsonify
 from flask_login import login_user, logout_user, login_required, current_user
 from . import main
-from .forms import Login, SearchBookForm, ChangePasswordForm, EditInfoForm, SearchStudentForm, NewStoreForm, StoreForm, BorrowForm
+from .forms import Login, registerForm, SearchBookForm, ChangePasswordForm, EditInfoForm, SearchStudentForm, NewStoreForm, StoreForm, BorrowForm
 from .. import db
 from ..models import Admin, Book, Inventory, Student, ReadBook
 import time, datetime
 
 
-@main.route('/', methods=['GET', 'POST'])
+@main.route('/login', methods=['GET', 'POST'])
 def login():
     form = Login()
     if form.validate_on_submit():
@@ -20,8 +20,24 @@ def login():
             login_user(user)
             session['admin_id'] = user.admin_id
             session['name'] = user.admin_name
-            return redirect(url_for('.index'))
+            return render_template('main/base.html')
     return render_template('main/login.html', form=form)
+
+
+@main.route('/register', methods=['GET', 'POST'])
+def register():
+    if request.method == 'GET':
+        RetForm = registerForm()
+        return render_template('main/register.html', form=RetForm)
+    else:
+        RetForm = registerForm(formdata=request.form)
+        if RetForm.validate():
+            print('接收到数据：', RetForm.data)
+            return '''<script>alert('您的注册请求已提交!');</script>'''
+        else:
+            print(RetForm.errors)
+        return render_template('main/register.html', form=RetForm)
+
 
 
 @main.route('/logout')
@@ -32,10 +48,12 @@ def logout():
     return redirect(url_for('.login'))
 
 
-@main.route('/index')
-@login_required
+
+
+
+@main.route('/', methods=['GET', 'POST'])
 def index():
-    return render_template('main/index.html', name=session.get('name'))
+    return render_template('main/index.html')
 
 
 @main.route('/echarts')

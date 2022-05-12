@@ -1,109 +1,177 @@
-{% extends "main/base.html" %}
-{% block title %}首页{% endblock %}\
-{% block head %}
-    <script type="text/javascript" src="https://echarts.apache.org/dist/echarts.js"></script>
-{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>index</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <link type="text/css" rel="stylesheet" href="../../static/Css/reset.css" />
+    <link type="text/css" rel="stylesheet" href="../../static/Css/1024_768.css" />
+    <link type="text/css" rel="stylesheet" media="screen and (min-width:861px) and (max-width:960px)" href="../../static/Css/pad_heng.css" />
+    <link type="text/css" rel="stylesheet" media="screen and (min-width:601px) and (max-width:860px)" href="../../static/Css/pad.css" />
+    <link type="text/css" rel="stylesheet" media="screen and (min-width:481px) and (max-width:600px)" href="../../static/Css/tel_heng.css" />
+    <link type="text/css" rel="stylesheet" media="screen and (max-width:480px)" href="../../static/Css/tel.css" />
+    <link rel="stylesheet" href="../../static/bootstrap.min.css">
+    <link rel="stylesheet" href="../../static/font-awesome.min.css">
+    <link href="https://cdn.bootcss.com/sweetalert/1.1.3/sweetalert.min.css" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-inverse">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">图书管理系统</a>
+        </div>
 
-{% block body %}
-<div id="main" style="width: 900px;height:470px;"></div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav ">
+                <li class="active"><a href="/index/">首页推荐 <span class="sr-only">(current)</span></a></li>
+                <li><a href="/remen/">热门图书</a></li>
+                <li><a href="/huojiang/">获奖图书</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                    <li class="active"><a href="/login">管理员登录 <span class="sr-only">(current)</span></a></li>
+                    <li><a href="/search_book">图书信息查询</a></li>
+                    <li><a href="/search_student">借阅信息查询</a></li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+</nav>
+<div class="w_100_l">
+	<div class="main">
+        <span class="index_img"><img src="../../static/Images/sunset-6822102_1280.jpg" style="width: 940px; height: 200px" alt="Dan Cederholm" border="0" usemap="#Map" />
+        <map name="Map" id="Map">
+          <area shape="rect" coords="857,230,930,269" href="#" alt="buy now" />
+        </map>
+        </span>
+        <p class="index_hr"></p>
+        <div class="copyrights">Collect from <a href="http://www.cssmoban.com/"  title="网站模板">网站模板</a></div>
+      <div class="content">
+        	<ul>
+            	<li>
+                	<dl>
+                    	<dd><a href="#"><img src="../../static/Images/s1466042.jpg" style="width: 100px; height: 174px"  alt="book" /></a></dd>
+                        <dt style="padding: 0px">
+                        	<p class="book_title"><a href="#" target="_blank">狼图腾</a></p>
+                            <p class="book_inline">姜戎</p>
+                        </dt>
+                    </dl>
+                </li>
+            	<li>
+                	<dl>
+                    	<dd><a href="#"><img src="../../static/Images/s3435158.jpg" style="width: 100px; height: 174px" alt="book" /></a></dd>
+                        <dt>
+                        	<p class="book_title"><a href="#" target="_blank">罗生门</a></p>
+                            <p class="book_inline">[日] 芥川龙之介</p>
+                        </dt>
+                    </dl>
+                </li>
+            	<li>
+                	<dl>
+                    	<dd><a href="#"><img src="../../static/Images/s9853099.jpg" style="width: 100px; height: 174px" alt="book" /></a></dd>
+                        <dt>
+                        	<p class="book_title"><a href="#" target="_blank">动物凶猛e</a></p>
+                            <p class="book_inline">b王朔</p>
+                        </dt>
+                    </dl>
+                </li>
+            	<li>
+                	<dl>
+                    	<dd><a href="#"><img src="../../static/Images/s6384944.jpg" style="width: 100px; height: 174px"  alt="book" /></a></dd>
+                        <dt>
+                        	<p class="book_title"><a href="#" target="_blank">百年孤独</a></p>
+                            <p class="book_inline">[哥伦比亚]  加西亚·马尔克斯</p>
+                        </dt>
+                    </dl>
+                </li>
+            	<li>
+                	<dl>
+                    	<dd><a href="#"><img src="../../static/Images/s5924326.jpg" style="width: 100px; height: 174px" alt="book" /></a></dd>
+                        <dt>
+                        	<p class="book_title"><a href="#" target="_blank">简爱（英文全本）</a></p>
+                            <p class="book_inline">[英] 夏洛蒂·勃朗特</p>
+                        </dt>
+                    </dl>
+                </li>
+            	<li>
+                	<dl>
+                    	<dd><a href="#"><img src="../../static/Images/s3526073.jpg" style="width: 100px; height: 174px"  alt="book" /></a></dd>
+                        <dt>
+                        	<p class="book_title"><a href="#" target="_blank">恶童日记</a></p>
+                            <p class="book_inline">[匈牙利] 雅歌塔·克里斯多夫</p>
+                        </dt>
+                    </dl>
+                </li>
+            	<li>
+                	<dl>
+                    	<dd><a href="#"><img src="../../static/Images/s4397380.jpg" style="width: 100px; height: 174px"  alt="book" /></a></dd>
+                        <dt>
+                        	<p class="book_title"><a href="#" target="_blank">东霓</a></p>
+                            <p class="book_inline">笛安</p>
+                        </dt>
+                    </dl>
+                </li>
+            	<li>
+                	<dl>
+                    	<dd><a href="#"><img src="../../static/Images/s1298847.jpg" style="width: 100px; height: 174px"  alt="book" /></a></dd>
+                        <dt>
+                        	<p class="book_title"><a href="#" target="_blank">双城记</a></p>
+                            <p class="book_inline">[英] 查尔斯·狄更斯</p>
+                        </dt>
+                    </dl>
+                </li>
+            	<li>
+                	<dl>
+                    	<dd><a href="#"><img src="../../static/Images/s4066862.jpg" style="width: 100px; height: 174px"  alt="book" /></a></dd>
+                        <dt>
+                        	<p class="book_title"><a href="#" target="_blank">放学后</a></p>
+                            <p class="book_inline">[日] 东野圭吾</p>
+                        </dt>
+                    </dl>
+                </li>
+            	<li>
+                	<dl>
+                    	<dd><a href="#"><img src="../../static/Images/s2364502.jpg" style="width: 100px; height: 174px"  alt="book" /></a></dd>
+                        <dt>
+                        	<p class="book_title"><a href="#" target="_blank">失乐园</a></p>
+                            <p class="book_inline">[日] 渡边淳一</p>
+                        </dt>
+                    </dl>
+                </li>
+            	<li>
+                	<dl>
+                    	<dd><a href="#"><img src="../../static/Images/s4610502.jpg" style="width: 100px; height: 174px"  alt="book" /></a></dd>
+                        <dt>
+                        	<p class="book_title"><a href="#" target="_blank">白夜行</a></p>
+                            <p class="book_inline">[日] 东野圭吾</p>
+                        </dt>
+                    </dl>
+                </li>
+            	<li>
+                	<dl>
+                    	<dd><a href="#"><img src="../../static/Images/s1595557.jpg" style="width: 100px; height: 174px"  alt="book" /></a></dd>
+                        <dt>
+                        	<p class="book_title"><a href="#" target="_blank">边城</a></p>
+                            <p class="book_inline">沈从文</p>
+                        </dt>
+                    </dl>
+                </li>
+            </ul>
+      </div>
+        <p class="index_hr"></p>
+        <h1 class="news_title">Newsletter</h1>
+        <p class="news_title_1"><span class="span_1">Keep up to date with new book releases and announcements with our newsletter.</span><span class="span_2"><img src="../../static/Images/img_inp.jpg" /></span></p>
+        <p class="index_hr" style="margin-top:20px;"></p>
+        <div class="footer">
+           版权所有&copy; Copyright 2021-2022　爆爆　双城之战下城福根酒馆02号17
+            <span class="span_2"><b>Published by</b><img src="../../static/Images/icon_hg.jpg" align="absmiddle" /></span>
+        </div>
+    </div>
+</div>
 
-{% endblock %}
-{% block script %}
-    <script>
-    var a = echarts;
-    var myChart = a.init(document.getElementById('main'));
-     // 显示标题，图例和空的坐标轴
-     myChart.setOption({
-         title: {
-             text: '近10天借书还书人次汇总图'
-         },
-         tooltip : {
-        trigger: 'axis'
-        },
-        legend: {
-            data:['今日数据']
-        },
-        toolbox: {
-            show : true,
-            feature : {
-                mark : {show: true},
-                dataView : {show: true, readOnly: false},
-                magicType : {show: true, type: ['line', 'bar']}
-                // restore : {show: true},
-                // saveAsImage : {show: true}
-            }
-        },
-        calculable : true,
-
-         xAxis : [
-            {
-                type : 'category',
-                boundaryGap : false,
-                data : []
-            }
-        ],
-         yAxis : [
-            {
-                type : 'value',
-                axisLabel : {
-                    formatter: '{value}'
-                }
-            }
-        ],
-         series : [
-            {
-                name:'最多数量',
-                type:'line',
-                data:[],
-                markPoint : {
-                    data : [
-                        {type : 'max', name: '最大值'},
-                        {type : 'min', name: '最小值'}
-                    ]
-                },
-                markLine : {
-                    data : [
-                        {type : 'average', name: '平均值'}
-                    ]
-                }
-            }]
-         });
-         myChart.showLoading();    //数据加载完之前先显示一段简单的loading动画
-         var names=[];    //名称数组（实际用来盛放X轴坐标值）
-         var nums=[];    //数量数组（实际用来盛放Y坐标值）
-         $.ajax({
-         type : "get",
-//       async : true,            //异步请求（同步请求将会锁住浏览器，用户其他操作必须等待请求完成才可以执行）
-         url : "{{ url_for('main.echarts') }}",    //请求发送
-         dataType : "json",        //返回数据形式为json
-         success : function(data) {
-             //请求成功时执行该函数内容，result即为服务器返回的json对象
-             if (data) {
-                for(var i=0;i<data.length;i++){
-                   names.push(data[i]["name"]);    //挨个取出名称并填入类别数组
-                   nums.push(data[i]["num"]);    //挨个取出数量并填入销量数组
-                }
-                myChart.hideLoading();    //隐藏加载动画
-                myChart.setOption({        //加载数据图表
-                    xAxis: {
-                        data: names
-                    },
-                    series: [{
-                        // 根据名字对应到相应的系列
-                        name: '数量',
-                        data: nums
-                    }]
-                });
-
-             }
-
-        },
-         error : function(errorMsg) {
-             //请求失败时执行该函数
-             alert("图表请求数据失败!");
-             myChart.hideLoading();
-         }
-    })
-    </script>
-
-{% endblock %}
+</body>
+</html>

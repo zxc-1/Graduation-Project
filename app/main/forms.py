@@ -1,6 +1,60 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, SelectField, PasswordField
+from wtforms import StringField, SubmitField, SelectField, PasswordField,DateTimeField, Form,validators,widgets
 from wtforms.validators import DataRequired, EqualTo, Length
+from flask import Flask, render_template, request, redirect
+from wtforms.fields import simple,html5
+
+
+class registerForm(Form):
+    card_id = simple.StringField(
+        #label='学号：',
+        validators=[
+            validators.DataRequired(message='学号不能为空'),
+            validators.Length(min=11, message='学号长度必须是%(min)d位！')
+        ],
+        widget=widgets.TextInput(),
+        render_kw={'class': 'form-control',
+                   "placeholder":"输入学号"}
+    )
+    student_name = simple.StringField(
+        # label='学生姓名：',
+        validators=[
+            validators.DataRequired(message='姓名不能为空'),
+            validators.Length(min=2, max=4, message='姓名长度必须大于%(min)d且小于%(max)d')
+        ],
+        widget=widgets.TextInput(),
+        render_kw={'class': 'form-control',
+                   "placeholder": "输入学生姓名"}
+    )
+    password = simple.PasswordField(
+        #label='用户密码：',
+        validators=[
+            validators.DataRequired(message='密码不能为空'),
+            validators.Length(min=5, message='用户名长度必须大于%(min)d'),
+            validators.Regexp(regex="[0-9a-zA-Z]{5,}",message='密码不允许使用特殊字符')
+        ],
+        widget=widgets.PasswordInput(),
+        render_kw={'class': 'form-control',
+                   "placeholder":"输入用户密码"}
+    )
+    RepeatPassword = simple.PasswordField(
+        #label='重复密码：',
+        validators=[
+            validators.DataRequired(message='密码不能为空'),
+            validators.Length(min=5, message='密码长度必须大于%(min)d'),
+            validators.Regexp(regex="[0-9a-zA-Z]{5,}",message='密码不允许使用特殊字符'),
+            validators.EqualTo("password",message="两次密码输入必须一致,龟孙")
+        ],
+        widget=widgets.PasswordInput(),
+        render_kw={'class': 'form-control',
+                   "placeholder":"再次输入密码"}
+    )
+    # enroll_time = DateTimeField("注册时间",format="%Y-%m-%d %H:%M:%S")
+    # valid_time = DateTimeField("毕业时间",format="%Y-%m-%d %H:%M:%S")
+    submit = simple.SubmitField(
+        label="用 户 注 册",
+        render_kw={ "class":"btn btn-success" }
+    )
 
 
 class Login(FlaskForm):
